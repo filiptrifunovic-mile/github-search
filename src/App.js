@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />}></Route>
         <Route path="login" element={<Login />}></Route>
+        <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>
   );

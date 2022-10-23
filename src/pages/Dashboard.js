@@ -1,7 +1,17 @@
 import React from "react";
+import { Info, Repos, User, Search, Navbar } from "../components";
+import loadingImage from "../images/preloader.gif";
 
-function Dashboard() {
-  return <div>Dashboard</div>;
-}
+const Dashboard = () => {
+  return (
+    <main>
+      <Navbar />
+      <Search />
+      <Info />
+      <User />
+      <Repos />
+    </main>
+  );
+};
 
 export default Dashboard;
