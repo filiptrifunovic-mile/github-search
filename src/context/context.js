@@ -17,6 +17,19 @@ const GithubProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ show: false, msg: "" });
 
+  async function searchGithubUser(user) {
+    toggleError();
+
+    const response = await axios(`${rootUrl}/users/${user}`).catch((err) =>
+      console.log(err)
+    );
+    if (response) {
+      setGithubUser(response.data);
+    } else {
+      toggleError(true, "there is no user with that username");
+    }
+  }
+
   function checkRequest() {
     axios(`${rootUrl}/rate_limit`)
       .then(({ data }) => {
@@ -28,7 +41,7 @@ const GithubProvider = ({ children }) => {
           toggleError(true, "sorry, you have exceeded your hourly limit!");
         }
       })
-      .catch((err) => alert(err));
+      .catch((err) => console.log(err));
   }
 
   function toggleError(show = false, msg = "") {
@@ -46,6 +59,7 @@ const GithubProvider = ({ children }) => {
         request,
         loading,
         error,
+        searchGithubUser,
       }}
     >
       {children}
