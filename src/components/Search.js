@@ -5,6 +5,8 @@ import { GithubContext } from "../context/context";
 const Search = () => {
   const [user, setUser] = React.useState("");
 
+  const { request } = React.useContext(GithubContext);
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -24,10 +26,10 @@ const Search = () => {
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
-            <button type="submit">Search</button>
+            {request > 0 && <button type="submit">Search</button>}
           </div>
         </form>
-        <h3>Requests : 60 / 60</h3>
+        <h3>Requests : {request} / 60</h3>
       </Wrapper>
     </section>
   );
