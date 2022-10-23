@@ -49,8 +49,8 @@ const Wrapper = styled.article`
     font-size: 1rem;
   }
   .followers {
-    overflow: hidden;
-    height: 260px;
+    overflow: scroll;
+    height: 280px;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
     gap: 1.25rem 1rem;
